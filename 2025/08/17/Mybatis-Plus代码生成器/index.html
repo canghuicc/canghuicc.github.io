@@ -14,18 +14,23 @@
   
 
   
-  <title>Archives | 苍晖的博客</title>
+  <title>Mybatis-Plus代码生成器 | 苍晖的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="苍晖的博客">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="介绍Mybatis-Plus提供了代码生成器，新版代码生成器只需要提供数据库信息，即可通过 builder模式快速生成 server层、 mapper层、 entity实体类以及controller层代码，整个过程非常的清爽，大大减少工作量。 代码生成器搭建准备工作先简单建立一个数据库 1234567891011121314151617SET NAMES utf8mb4;SET FOREIGN_K">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mybatis-Plus代码生成器">
+<meta property="og:url" content="http://example.com/2025/08/17/Mybatis-Plus%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8/index.html">
 <meta property="og:site_name" content="苍晖的博客">
+<meta property="og:description" content="介绍Mybatis-Plus提供了代码生成器，新版代码生成器只需要提供数据库信息，即可通过 builder模式快速生成 server层、 mapper层、 entity实体类以及controller层代码，整个过程非常的清爽，大大减少工作量。 代码生成器搭建准备工作先简单建立一个数据库 1234567891011121314151617SET NAMES utf8mb4;SET FOREIGN_K">
 <meta property="og:locale">
+<meta property="article:published_time" content="2025-08-16T17:55:00.000Z">
+<meta property="article:modified_time" content="2025-08-16T18:15:45.077Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Mybatis-Plus">
 <meta name="twitter:card" content="summary">
   
   
@@ -213,82 +218,100 @@
     <div id="content-body">
        
 
-<div class="archive-main-card">
-    <div class="archive-top">
-      <div class="main-title-bar">
-        <div class="main-title-dot"></div>
-        <h1 class="article-title">Archives</h1>
-      </div>    
+
+<article id="post-Mybatis-Plus代码生成器" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        Mybatis-Plus代码生成器
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-08-16T17:55:00.000Z" itemprop="datePublished">2025-08-17</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/Java/">Java</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            845 words 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis-Plus/" rel="tag">Mybatis-Plus</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Mybatis-Plus提供了代码生成器，新版代码生成器只需要提供数据库信息，即可通过<code> builder</code>模式快速生成<code> server层</code>、<code> mapper层</code>、<code> entity实体类</code>以及<code>controller层</code>代码，整个过程非常的清爽，大大减少工作量。</p>
+<h2 id="代码生成器搭建"><a href="#代码生成器搭建" class="headerlink" title="代码生成器搭建"></a>代码生成器搭建</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>先简单建立一个数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> NAMES utf8mb4;</span><br><span class="line"><span class="keyword">SET</span> FOREIGN_KEY_CHECKS <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="comment">-- Table structure for user</span></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> IF <span class="keyword">EXISTS</span> `<span class="keyword">user</span>`;</span><br><span class="line"><span class="keyword">CREATE TABLE</span> `<span class="keyword">user</span>`  (</span><br><span class="line">  `id` <span class="type">int</span> <span class="keyword">NOT NULL</span> AUTO_INCREMENT,</span><br><span class="line">  `username` <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">CHARACTER SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_0900_ai_ci <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `password` <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">CHARACTER SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_0900_ai_ci <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `email` <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">CHARACTER SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_0900_ai_ci <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `phone` <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">CHARACTER SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_0900_ai_ci <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  <span class="keyword">PRIMARY KEY</span> (`id`) <span class="keyword">USING</span> BTREE</span><br><span class="line">) ENGINE <span class="operator">=</span> InnoDB <span class="keyword">CHARACTER SET</span> <span class="operator">=</span> utf8mb4 <span class="keyword">COLLATE</span> <span class="operator">=</span> utf8mb4_0900_ai_ci ROW_FORMAT <span class="operator">=</span> <span class="keyword">Dynamic</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> FOREIGN_KEY_CHECKS <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<p>数据库结构如下：</p>
+
+
+<h4 id="创建一个SpringBoot项目"><a href="#创建一个SpringBoot项目" class="headerlink" title="创建一个SpringBoot项目"></a>创建一个SpringBoot项目</h4><p>选择Spring Web依赖</p>
+
+
+        
+      </div>
+
+         
     </div>
     
-    
-      
-      
-        
-        <div class="year-line">
-            <div class="year-num">2025</div>
-            <div class="dot-wrapper">
-                <div class="dot"></div>
-            </div>
-            <div class="article-count">3 articles</div>
-        </div>
-      
-      <a class="archive-article-link" href="/2025/08/17/Mybatis-Plus%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8/" title="Mybatis-Plus代码生成器">
-        <div class="date">08-17</div>
-        <div class="line">
-            <div class="dot"></div>
-        </div>
-        <div class="title">
-            <div class="title-inner">
-                
-                    Mybatis-Plus代码生成器
-                
-            </div>
-        </div>
-        <div class="tags">
-            #Mybatis-Plus
-        </div>
-      </a>
-    
-      
-      
-      <a class="archive-article-link" href="/2025/08/16/@Controller%E6%B3%A8%E8%A7%A3%E5%92%8C@RestController%E6%B3%A8%E8%A7%A3/" title="@Controller注解和@RestController注解">
-        <div class="date">08-16</div>
-        <div class="line">
-            <div class="dot"></div>
-        </div>
-        <div class="title">
-            <div class="title-inner">
-                
-                    @Controller注解和@RestController注解
-                
-            </div>
-        </div>
-        <div class="tags">
-            #SpingBoot
-        </div>
-      </a>
-    
-      
-      
-      <a class="archive-article-link" href="/2025/08/16/jdk%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7jpackage%E7%9A%84%E4%BD%BF%E7%94%A8/" title="jdk打包工具jpackage的使用">
-        <div class="date">08-16</div>
-        <div class="line">
-            <div class="dot"></div>
-        </div>
-        <div class="title">
-            <div class="title-inner">
-                
-                    jdk打包工具jpackage的使用
-                
-            </div>
-        </div>
-        <div class="tags">
-            #jdk
-        </div>
-      </a>
-    
+     
   </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left  disabled "
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/2025/08/16/@Controller%E6%B3%A8%E8%A7%A3%E5%92%8C@RestController%E6%B3%A8%E8%A7%A3/"
+      title="@Controller注解和@RestController注解"
+     >
+
+    <p class="title-text">
+      
+        @Controller注解和@RestController注解
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
     </div>
     <div id="footer-wrapper">
       <footer id="footer">
